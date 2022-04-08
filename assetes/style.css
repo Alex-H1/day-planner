@@ -1,6 +1,4 @@
-root{
-  --marginL: 50%; 
-}
+
 
 body {
   font-family: 'Open Sans', sans-serif;
@@ -74,6 +72,3 @@ textarea{
   transition: all .3s ease-in-out;
 }
 
-p{
-  margin-left: var(--marginL);
-}

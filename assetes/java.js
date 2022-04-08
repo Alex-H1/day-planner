@@ -1,19 +1,33 @@
 function time(){
-    $("#currentday").text(moment().format("MMM Do YY"));
-};
+    $("#currentDay").text.moment().format("MMM Do YY");
+}
+var timeBlockEl = $(".col-8")
 
-function changeBlock(){
-    $(".time-block").each(function(){
-    var block = parseInt($(this).attr("id").replace("time-",""))
-    var current = parsInt(moment().format("H"));
+var checkTime = moment().format("H");
 
+function checkBlock(){
     
-        if(block>current){
-            $(this).setAttribut(".future");
-        }else if(current<block){
-            $(this).setAttribut(".past");
+    var timeBlockEl = $(".col-8")
+    for(var i = 0; i< timeBlockEl.length; i++){
+        var tArea=timeBlockEl[i].id;
+        var changeColour = document.getElementById(timeBlockEl[i].id);
+        // removes old classes
+        $(timeBlockEl[i].id).removeClass(".present .past .future");
+
+        if(tArea < checkTime){
+            $(changeColour).addClass("past");
+        }else if(tArea > checkTime){
+            changeColour.addClass("past")
         }else{
-            $(this).setAttribut(".present");
+            changeColour.addClass("present")
         }
-    })
+
+    } 
 };
+
+setInterval(checkBlock(),(600000));
+checkBlock();
+
+var tArea;
+console.log(checkTime);
+
