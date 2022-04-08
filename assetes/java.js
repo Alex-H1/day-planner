@@ -1,7 +1,15 @@
 function time(){
-    $("#currentDay").text.moment().format("MMM Do YY");
-}
-var timeBlockEl = $(".col-8")
+    $("#currentDay").text(moment().format("dddd,MMMM Do"));
+    
+    $(".time-block").each(function(){
+        var blockText =$(this).attr("id");
+        $(".text").text(localStorage.getItem(moment().format("MMM Do YYYY")));
+
+    });
+    $(".saveBtn").on("click", setLocal);
+
+};
+var timeBlockEl = $(".col-8");
 
 var checkTime = moment().format("H");
 
@@ -17,29 +25,19 @@ function checkBlock(){
         if(tArea < checkTime){
             $(changeColour).addClass("past");
         }else if(tArea > checkTime){
-            changeColour.addClass("past");
+            changeColour.addClass("future");
         }else{
             changeColour.addClass("present");
         };
     } ;
 };
-
-var schedule;
-function setLocal(){
-    schedule = $(".text").val;
-    localStorage.setItem(schedule,"schedule");
-
+function setLocal(event){
+    var text = $(this).parent().attr("id")
+    localStorage.setItem(moment().format("MMM Do YYYY"), + text, $("textarea").val());
+    
+    return;
 }
-
-function getLocal(){
-    localStorage.getItem(JSON.stringify (schedule));
-
-}
-
+// checks  every ten mins 
 setInterval(checkBlock(),(600000));
 checkBlock();
-
-var tArea;
-console.log(schedule,"schedule");
-
-$(".saveBtn").on("click", setLocal);
+time();
