@@ -17,17 +17,29 @@ function checkBlock(){
         if(tArea < checkTime){
             $(changeColour).addClass("past");
         }else if(tArea > checkTime){
-            changeColour.addClass("past")
+            changeColour.addClass("past");
         }else{
-            changeColour.addClass("present")
-        }
-
-    } 
+            changeColour.addClass("present");
+        };
+    } ;
 };
+
+var schedule;
+function setLocal(){
+    schedule = $(".text").val;
+    localStorage.setItem(schedule,"schedule");
+
+}
+
+function getLocal(){
+    localStorage.getItem(JSON.stringify (schedule));
+
+}
 
 setInterval(checkBlock(),(600000));
 checkBlock();
 
 var tArea;
-console.log(checkTime);
+console.log(schedule,"schedule");
 
+$(".saveBtn").on("click", setLocal);
