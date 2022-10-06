@@ -9,13 +9,13 @@ function time(){
     $(".saveBtn").on("click", setLocal);
 
 };
-var timeBlockEl = $(".col-8");
+var timeBlockEl = $(".text");
 
 var checkTime = moment().format("H");
-
+console.log(checkTime);
 function checkBlock(){
     
-    var timeBlockEl = $(".col-8")
+    // var timeBlockEl = $(".col-8")
     for(var i = 0; i< timeBlockEl.length; i++){
         var tArea=timeBlockEl[i].id;
         var changeColour = document.getElementById(timeBlockEl[i].id);
@@ -25,9 +25,9 @@ function checkBlock(){
         if(tArea < checkTime){
             $(changeColour).addClass("past");
         }else if(tArea > checkTime){
-            changeColour.addClass("future");
+            $(changeColour).addClass("future");
         }else{
-            changeColour.addClass("present");
+            $(changeColour).addClass("present");
         };
     } ;
 };
@@ -37,7 +37,6 @@ function setLocal(event){
     
     return;
 }
-// checks  every ten mins 
-setInterval(checkBlock(),(600000));
+setInterval(checkBlock(),600000);
 checkBlock();
 time();
