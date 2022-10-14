@@ -1,4 +1,6 @@
+
 let text = $("textarea");
+let currentTime = moment().format("H");
 
 // displays the header date
 function time() {
@@ -8,18 +10,31 @@ function time() {
 // checks time for each text box
 function checkTime() {
     for(let i = 0; i < text.length; i++) {
-        // gives military time 
-        let currentTime = moment().format("H");      
-        let rowTime = text[i].id;
-        // test if time block is in the past
-        if(rowTime < currentTime) {
-            text.addClass("past");
-        }    
+        
+        
+        // convert to number from string
+        let parseTime = parseInt(currentTime);
+        let parseRow = parseInt(text[i].id);
+        
+        $(text[i].id).removeClass(".past .present .future")
+        
+        if(parseRow < parseTime) {
+            console.log(parseTime)
+            $(text[i]).toggleClass("past");
+        }
+        if (parseRow == parseTime) {
+            $(text[i]).toggleClass("present");
+        } 
+        if (parseRow > parseTime) {
+            $(text[i]).toggleClass("future");
+        }
     }
 }
+
 function init() {
     time();
     checkTime();
 }
 
 init();
+
