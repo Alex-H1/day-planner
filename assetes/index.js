@@ -1,5 +1,7 @@
 
 let text = $("textarea");
+let btn = $(".saveBtn");
+
 let currentTime = moment().format("H");
 
 // displays the header date
@@ -10,14 +12,14 @@ function time() {
 // checks time for each text box
 function checkTime() {
     for(let i = 0; i < text.length; i++) {
-        
-        
         // convert to number from string
         let parseTime = parseInt(currentTime);
         let parseRow = parseInt(text[i].id);
-        
-        $(text[i].id).removeClass(".past .present .future")
-        
+
+        $(".saveBtn")[i].on('click', function(){
+            let boxText = $(text[i]).val();
+        });
+                
         if(parseRow < parseTime) {
             console.log(parseTime)
             $(text[i]).toggleClass("past");
@@ -31,9 +33,14 @@ function checkTime() {
     }
 }
 
+
+function savePlan(event) {
+    
+}
+
 function init() {
     time();
-    checkTime();
+    setInterval(checkTime(),(600000));
 }
 
 init();
