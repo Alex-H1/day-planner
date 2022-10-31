@@ -1,0 +1,22 @@
+{
+  "name": "day-planner",
+  "version": "1.0.0",
+  "description": "## description This is a daily planner. The planner only displays the working hours 9-5. Eath time block on the planner will change colers based on if the time is current in the future or in the past. The text in the time block will also be save throught the day if the save button is pressed.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alex-H1/day-planner.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alex-H1/day-planner/issues"
+  },
+  "homepage": "https://github.com/Alex-H1/day-planner#readme",
+  "dependencies": {
+    "jquery": "^3.6.1"
+  }
+}
